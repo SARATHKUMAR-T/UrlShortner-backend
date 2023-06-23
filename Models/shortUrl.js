@@ -11,8 +11,8 @@ const shortUrlSchema=new mongoose.Schema({
     },
     short:{
         type:String,
-       required:true,
-       default:shortid.generate
+        default:shortid.generate,
+        required:true,
     }
 })
 

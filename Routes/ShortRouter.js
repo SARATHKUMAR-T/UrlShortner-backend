@@ -5,6 +5,7 @@ import { Url } from "../Models/shortUrl.js";
 // api
 
 export const ShortRouter = express.Router();
+
 ShortRouter.post("/short", async (req, res) => {
   try {
     const full = await new Url({ full: req.body.fullUrl }).save();
@@ -20,7 +21,7 @@ ShortRouter.get("/:shortUrl", async (req, res) => {
   try {
     const shortId = await req.params.shortUrl;
     const final = await Url.findOne({ short: shortId });
-    res.send(final.full);
+    res.status(200).json({final})
   } catch (error) {
     res.status(500).json({ message: "Internal server error", error });
   }
