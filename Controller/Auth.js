@@ -10,6 +10,7 @@ let token;
             token = await req.headers["x-auth-token"];
             const decode = jwt.verify(token, process.env.SECRET_KEY)
             req.user = await User.findById(decode.id).select("_id firstName email")
+            console.log('authentication passed')
             next()
         } catch (error) {
             console.log(error)

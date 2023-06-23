@@ -7,8 +7,7 @@ import { Url } from "../Models/shortUrl.js";
 export const ShortRouter = express.Router();
 ShortRouter.post("/short", async (req, res) => {
   try {
-    const full = await Url.create({ full: req.body.fullUrl });
-
+    const full = await new Url({ full: req.body.fullUrl }).save();
     res.status(200).json({ message: "url fetched successfully", full });
   } catch (error) {
     console.log(error);
