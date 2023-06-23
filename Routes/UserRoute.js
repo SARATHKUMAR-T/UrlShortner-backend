@@ -30,8 +30,8 @@ userRouter.post("/login", async (req, res) => {
       .status(200)
       .json({ message: "user logged in successfully", user: true, token });
   } catch (error) {
-    console.log(error)
-    res.status(500).json({ message: "internal server error" });
+    console.log(error);
+    res.status(500).json({ message: "internal server error",error });
   }
 });
 
@@ -62,6 +62,6 @@ userRouter.post("/signup", async (req, res) => {
       : res.status(500).json({ message: "unable to create new user" });
   } catch (error) {
     console.log(error);
-    res.status(500).json({ message: "internal server error" });
+    res.status(500).json({ message: "internal server error",error });
   }
 });
